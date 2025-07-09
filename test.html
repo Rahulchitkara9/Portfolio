@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sticky Header After Scroll</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Header default (not sticky) */
+    header {
+      width: 100%;
+      padding: 20px;
+      color: white;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    /* Sticky class added after scroll */
+    .sticky {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .content {
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <header id="mainHeader">
+    <h1>My Website</h1>
+  </header>
+
+  <div class="content">
+    <p>Scroll down to see the header become sticky...</p>
+    <p style="height: 1500px;"></p>
+  </div>
+
+  <script>
+    const header = document.getElementById("mainHeader");
+    const headerOffset = header.offsetTop;
+
+    window.addEventListener("scroll", function () {
+      if (window.pageYOffset > headerOffset) {
+        header.classList.add("sticky");
+      } else {
+        header.classList.remove("sticky");
+      }
+    });
+  </script>
+
+</body>
+</html>
